@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rockies 2026 — Trip Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#222222;
+  --grey:#717171;
+  --grey-light:#B0B0B0;
+  --border:#DDDDDD;
+  --border-light:#EBEBEB;
+  --bg:#FFFFFF;
+  --bg-soft:#F7F7F7;
+  --coral:#FF385C;
+  --coral-dark:#E31C5F;
+  --coral-soft:#FFE8EC;
+  --teal:#00A699;
+  --teal-soft:#E0F6F4;
+  --font:'Plus Jakarta Sans', sans-serif;
+  --radius-lg:20px;
+  --radius-md:14px;
+  --radius-sm:8px;
+  --shadow:0 6px 20px rgba(0,0,0,0.09);
+  --shadow-lg:0 10px 34px rgba(0,0,0,0.14);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);
+  font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;}
+a{color:var(--ink);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+h1,h2,h3,h4{font-family:var(--font);font-weight:800;margin:0 0 .4em;color:var(--ink);letter-spacing:-.01em;}
+p{margin:0 0 1em;}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--coral);}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:8px 16px;font-weight:600;font-size:13.5px;}
+.pill-coral{background:var(--coral);color:#fff;}
+.pill-outline{border:1px solid var(--ink);color:var(--ink);background:#fff;}
+
+/* ---------- TOP NAV ---------- */
+#topnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border-light);}
+.nav-inner{max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:20px;}
+.brand{font-weight:800;font-size:18px;white-space:nowrap;display:flex;align-items:center;gap:8px;color:var(--ink);}
+.brand .dot{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--coral),#FF7A8A);flex:none;}
+.navlinks{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;}
+.navlinks::-webkit-scrollbar{display:none;}
+.navlinks a{font-size:13.5px;font-weight:600;color:var(--grey);text-decoration:none;white-space:nowrap;padding:9px 14px;border-radius:999px;border:1px solid transparent;}
+.navlinks a:hover{background:var(--bg-soft);color:var(--ink);}
+.navlinks a.active{background:var(--ink);color:#fff;}
+
+/* ---------- HERO ---------- */
+.hero{padding:40px 0 0;}
+.hero .wrap{}
+.hero h1{font-size:clamp(28px,4.6vw,44px);line-height:1.05;max-width:780px;}
+.hero .sub{font-size:16.5px;color:var(--grey);max-width:600px;margin-bottom:1.4em;}
+.hero-meta{display:flex;gap:22px;flex-wrap:wrap;margin:20px 0 28px;font-size:13.5px;color:var(--grey);}
+.hero-meta strong{display:block;font-size:19px;color:var(--ink);font-weight:800;}
+.photo-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:8px;
+  border-radius:var(--radius-lg);overflow:hidden;height:420px;
+}
+.photo-grid img{width:100%;height:100%;object-fit:cover;}
+.photo-grid .g1{grid-row:1/3;grid-column:1;}
+.photo-grid .g2{grid-row:1;grid-column:2;}
+.photo-grid .g3{grid-row:1;grid-column:3;}
+.photo-grid .g4{grid-row:2;grid-column:2;}
+.photo-grid .g5{grid-row:2;grid-column:3;}
+
+/* ---------- ALERT STRIP ---------- */
+.alerts{background:var(--bg-soft);padding:36px 0 40px;margin-top:44px;}
+.alerts .wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.alert-card{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:20px 22px;box-shadow:var(--shadow);}
+.alert-card .num{font-size:12px;font-weight:700;color:var(--coral);letter-spacing:.04em;}
+.alert-card h4{font-size:16px;margin:.35em 0 .3em;}
+.alert-card p{color:var(--grey);font-size:13.8px;margin:0;}
+.alert-note{max-width:1080px;margin:20px auto 0;padding:0 24px;font-size:13.5px;color:var(--grey);}
+.alert-note strong{color:var(--ink);}
+
+/* ---------- SECTION SCAFFOLD ---------- */
+section.block{padding:56px 0;}
+section.block.soft{background:var(--bg-soft);}
+.block-head{max-width:640px;margin-bottom:30px;}
+.block-head h2{font-size:clamp(24px,3.6vw,32px);}
+.block-head p{color:var(--grey);font-size:15px;}
+
+/* ---------- STAYS ---------- */
+.stay-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.stay-card{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow);transition:transform .15s ease, box-shadow .15s ease;}
+.stay-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+.stay-photo{height:130px;overflow:hidden;}
+.stay-photo img{width:100%;height:100%;object-fit:cover;}
+.stay-body{padding:16px 18px 18px;}
+.stay-body .dates{font-size:12px;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:.03em;}
+.stay-body h4{font-size:16.5px;margin:.3em 0 .3em;}
+.stay-body .addr{font-size:12.8px;color:var(--grey);display:flex;gap:6px;align-items:flex-start;margin-bottom:8px;}
+.stay-body .addr svg{flex:none;margin-top:2px;}
+.stay-body .desc{font-size:13px;color:var(--grey);margin:0;}
+.stay-body a.maplink{font-size:12.5px;font-weight:700;color:var(--coral);text-decoration:none;}
+
+/* ---------- OVERVIEW BASE CARDS (legacy small cards, kept for logic block) ---------- */
+.logic{margin-top:30px;background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:24px 26px;box-shadow:var(--shadow);}
+.logic h4{font-size:15px;}
+.logic ul{margin:0;padding-left:20px;font-size:14.5px;color:var(--grey);}
+.logic li{margin-bottom:8px;}
+
+/* ---------- DAY ACCORDION ---------- */
+.day{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow);}
+.day-head{display:flex;align-items:center;gap:16px;padding:18px 20px;cursor:pointer;user-select:none;}
+.day-head .daynum{font-size:12px;font-weight:700;color:var(--coral);flex:none;width:64px;line-height:1.3;}
+.day-head .daynum b{display:block;font-size:24px;color:var(--ink);font-weight:800;}
+.day-head .title{flex:1;min-width:0;}
+.day-head h3{font-size:18px;margin:0 0 2px;}
+.day-head .theme{font-size:13px;color:var(--grey);}
+.day-head .chev{color:var(--grey);transition:transform .2s ease;flex:none;font-size:18px;}
+.day.open .chev{transform:rotate(180deg);}
+.day-body{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.day.open .day-body{max-height:4200px;}
+.day-body-inner{padding:0 20px 24px;border-top:1px solid var(--border-light);}
+.stat-row{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0;}
+.stat{font-size:12.5px;font-weight:600;background:var(--bg-soft);border:1px solid var(--border-light);border-radius:999px;padding:7px 14px;color:var(--grey);}
+.stat b{color:var(--ink);}
+.day-sec{margin-bottom:16px;}
+.day-sec h5{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--coral);margin:0 0 6px;}
+.day-sec p{font-size:14.5px;color:var(--grey);margin:0;}
+.backup{background:var(--teal-soft);border-left:3px solid var(--teal);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:12px 16px;font-size:13.5px;color:#0B4A45;}
+.backup b{color:var(--teal);}
+.timeline-table table{min-width:0;font-size:13px;}
+.timeline-table th,.timeline-table td{padding:8px 12px;}
+.timeline-table td:first-child{font-weight:700;font-size:12px;white-space:nowrap;color:var(--coral);}
+.day-photo{position:relative;margin:0 0 18px;border-radius:var(--radius-md);overflow:hidden;}
+.day-photo img{width:100%;height:230px;object-fit:cover;display:block;}
+.day-photo-cap{position:absolute;left:0;right:0;bottom:0;padding:10px 16px;background:linear-gradient(0deg,rgba(0,0,0,0.65),transparent);color:#fff;font-size:12.5px;font-weight:600;}
+.pack-badge{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:11.5px;font-weight:700;color:var(--coral-dark);background:var(--coral-soft);border-radius:999px;padding:5px 12px;}
+.day-alert{background:#FFF7E8;border-left:3px solid #E8A33D;border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:14px 16px;font-size:13.5px;color:#6B4A16;margin-bottom:16px;}
+.day-alert b{color:#B4740A;}
+.carry-list,.reminder-list{margin:0;padding-left:20px;font-size:14px;color:var(--grey);}
+.carry-list li,.reminder-list li{margin-bottom:6px;}
+
+/* ---------- HIKE CARDS ---------- */
+.hike-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.hike-card{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:20px;box-shadow:var(--shadow);}
+.hike-card h4{font-size:17.5px;display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
+.rating{font-size:12px;font-weight:700;color:var(--coral);white-space:nowrap;}
+.hike-photo{margin:-20px -20px 14px;border-radius:var(--radius-md) var(--radius-md) 0 0;overflow:hidden;height:150px;}
+.hike-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.hike-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:14px 0;border:1px solid var(--border-light);border-radius:var(--radius-sm);overflow:hidden;}
+.hike-stats div{padding:9px 6px;text-align:center;border-right:1px solid var(--border-light);background:var(--bg-soft);}
+.hike-stats div:last-child{border-right:none;}
+.hike-stats .v{display:block;font-weight:700;font-size:13px;color:var(--ink);}
+.hike-stats .l{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--grey);margin-top:2px;}
+.hike-card dl{margin:0;font-size:13.5px;}
+.hike-card dt{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--grey);margin-top:10px;}
+.hike-card dd{margin:2px 0 0;color:var(--grey);}
+.diff-tag{display:inline-block;font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:999px;margin-left:8px;vertical-align:middle;}
+.diff-easy{background:#DDF3E4;color:#0F7A3D;}
+.diff-moderate{background:#FFEBD1;color:#B4740A;}
+.diff-strenuous{background:var(--coral-soft);color:var(--coral-dark);}
+
+/* ---------- TABLES ---------- */
+.tablewrap{overflow-x:auto;border:1px solid var(--border-light);border-radius:var(--radius-md);background:#fff;box-shadow:var(--shadow);}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px;}
+th{text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--grey);background:var(--bg-soft);padding:11px 14px;border-bottom:1px solid var(--border-light);white-space:nowrap;}
+td{padding:12px 14px;border-bottom:1px solid var(--border-light);color:var(--grey);vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+td.strong{color:var(--ink);font-weight:700;}
+
+/* ---------- FOOD CARDS ---------- */
+.food-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.food-card{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:16px 18px;box-shadow:var(--shadow);}
+.food-card h4{font-size:15px;margin-bottom:8px;}
+.food-card .row{font-size:13px;margin-bottom:5px;color:var(--grey);}
+.food-card .row b{color:var(--ink);font-weight:700;}
+.food-card .price{font-size:11px;font-weight:700;color:var(--coral);margin-top:8px;}
+
+/* ---------- BUDGET ---------- */
+.budget-total{display:flex;justify-content:space-between;align-items:baseline;background:var(--ink);color:#fff;border-radius:var(--radius-md);padding:20px 22px;margin-top:16px;}
+.budget-total .lbl{font-size:12px;color:#C7C7C7;font-weight:600;}
+.budget-total .amt{font-size:26px;font-weight:800;}
+
+/* ---------- PACKING ---------- */
+.pack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.pack-col h4{font-size:13.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--coral);margin-bottom:10px;}
+.pack-col ul{list-style:none;margin:0 0 22px;padding:0;}
+.pack-col li{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--grey);padding:7px 0;border-bottom:1px dashed var(--border-light);cursor:pointer;}
+.pack-col li .box{width:15px;height:15px;border:1.5px solid var(--border);border-radius:5px;flex:none;margin-top:2px;}
+.pack-col li.checked .box{background:var(--teal);border-color:var(--teal);}
+.pack-col li.checked{color:var(--grey-light);text-decoration:line-through;}
+
+/* ---------- SAFETY ---------- */
+.safety-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.safety-card{background:#fff;border:1px solid var(--border-light);border-left:3px solid var(--coral);border-radius:0 var(--radius-md) var(--radius-md) 0;padding:18px 20px;box-shadow:var(--shadow);}
+.safety-card h4{font-size:15px;}
+.safety-card p{font-size:13.5px;color:var(--grey);margin:0;}
+.contact-row{display:flex;justify-content:space-between;font-size:13px;padding:7px 0;border-bottom:1px dashed var(--border-light);}
+.contact-row span:last-child{font-weight:700;}
+
+/* ---------- FOOTER ---------- */
+footer{padding:44px 0 60px;color:var(--grey);font-size:13px;}
+footer .wrap{border-top:1px solid var(--border-light);padding-top:24px;}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:900px){
+  .alerts .wrap{grid-template-columns:1fr;}
+  .stay-grid{grid-template-columns:repeat(2,1fr);}
+  .hike-grid{grid-template-columns:1fr;}
+  .food-grid{grid-template-columns:1fr;}
+  .pack-grid{grid-template-columns:1fr;}
+  .safety-grid{grid-template-columns:1fr;}
+  .photo-grid{height:320px;grid-template-columns:1.4fr 1fr;}
+  .photo-grid .g3,.photo-grid .g5{display:none;}
+  .photo-grid .g4{grid-row:2;grid-column:2;}
+}
+@media (max-width:560px){
+  .stay-grid{grid-template-columns:1fr;}
+  .hike-stats{grid-template-columns:repeat(2,1fr);}
+  .hike-stats div:nth-child(2){border-right:none;}
+  .photo-grid{grid-template-columns:1fr;height:auto;}
+  .photo-grid img{height:200px;}
+  .photo-grid .g2,.g3,.g4,.g5{display:none;}
+  .photo-grid .g1{grid-row:auto;}
+}
+</style>
+</head>
+<body>
+
+<nav id="topnav">
+  <div class="nav-inner">
+    <div class="brand"><span class="dot"></span>Rockies 2026</div>
+    <div class="navlinks" id="navlinks">
+      <a href="#alerts">Alerts</a>
+      <a href="#stays">Stays</a>
+      <a href="#itinerary">Itinerary</a>
+      <a href="#hikes">Hikes</a>
+      <a href="#stops">Viewpoints</a>
+      <a href="#food">Food</a>
+      <a href="#photo">Photography</a>
+      <a href="#budget">Budget</a>
+      <a href="#booking">Booking</a>
+      <a href="#packing">Packing</a>
+      <a href="#safety">Safety</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Trip guide · Sept 5–13, 2026</p>
+    <h1>Cochrane to Golden to Radium to Harvie Heights.</h1>
+    <p class="sub">Nine days, four stays, no backtracking. Everything the two of you need for the road — where you're sleeping, what you're climbing, and when the light is best.</p>
+    <div class="hero-meta">
+      <div><strong>9</strong>days on the road</div>
+      <div><strong>4</strong>stays, zero backtracking</div>
+      <div><strong>~1,470km</strong>total driving</div>
+      <div><strong>~62km</strong>on foot</div>
+      <div><strong>9/9</strong>days with a sunrise or sunset</div>
+    </div>
+    <div class="photo-grid">
+      <div class="g1"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Moraine_Lake_17092005.jpg?width=900" alt="Moraine Lake" loading="lazy"></div>
+      <div class="g2"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vermillion_Lakes,_Banff.jpg?width=500" alt="Vermilion Lakes" loading="lazy"></div>
+      <div class="g3"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Peyto_Lake-Banff_NP-Canada.jpg?width=500" alt="Peyto Lake" loading="lazy"></div>
+      <div class="g4"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Emerald_Lake-Yoho.jpg?width=500" alt="Emerald Lake" loading="lazy"></div>
+      <div class="g5"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stairs_on_Ha_Ling_Peak.jpg?width=500" alt="Ha Ling Peak" loading="lazy"></div>
+    </div>
+  </div>
+</header>
+
+<section class="alerts" id="alerts">
+  <div class="wrap">
+    <div class="alert-card">
+      <div class="num">01 · Moraine Lake</div>
+      <h4>The shuttle is the whole trip</h4>
+      <p>No private cars on Moraine Lake Road, ever. Sentinel Pass (Day 5) depends entirely on the Parks Canada Alpine Start shuttle reservation — check <b>reservation.pc.gc.ca</b> today if it isn't locked in.</p>
+    </div>
+    <div class="alert-card">
+      <div class="num">02 · Sept 7</div>
+      <h4>You land on Labour Day weekend</h4>
+      <p>Your first three nights overlap the busiest long weekend left in the season. Lots fill before 7am — early starts on Day 2–3 aren't optional.</p>
+    </div>
+    <div class="alert-card">
+      <div class="num">03 · Larch season</div>
+      <h4>The larches will still be green</h4>
+      <p>Gold larches peak the last two weeks of September. You'll get the alpine scale and Sentinel Pass itself — just not the postcard gold.</p>
+    </div>
+    <div class="alert-card">
+      <div class="num">04 · Canmore side</div>
+      <h4>Hwy 742 closure — check before Day 8</h4>
+      <p>A June 2026 rockslide shut Hwy 742/Smith-Dorrien Trail indefinitely. Ha Ling's trailhead (Day 8) needs a Hwy 40 South detour if it's still closed — check <b>albertaparks.ca</b> the night before.</p>
+    </div>
+  </div>
+  <p class="alert-note"><strong>Also worth knowing:</strong> Banff National Park entry is free for everyone June 19 – Sept 7, 2026, so your first three park-days cost nothing. From Sept 8 onward you'll need a paid day pass or Discovery Pass. Day 9's Prairie View Lookout needs a separate Kananaskis Conservation Pass.</p>
+</section>
+
+<section class="block" id="stays">
+  <div class="wrap">
+    <div class="block-head">
+      <p class="eyebrow">Where you're staying</p>
+      <h2>Four stays, one direction</h2>
+      <p>Tap the address to open it in Maps.</p>
+    </div>
+    <div class="stay-grid" id="stayGrid"></div>
+    <div class="logic">
+      <h4>Why it's ordered this way</h4>
+      <ul>
+        <li><b>Cochrane</b> covers Banff town on arrival day and Johnston Canyon the next — no detour, since Day 2 was headed to Banff anyway.</li>
+        <li><b>Golden</b> anchors your two biggest hike days plus the full Icefields Parkway as its own dedicated day.</li>
+        <li><b>Golden → Radium</b> runs through Yoho and down the Kootenay Parkway, ending with a sunset soak.</li>
+        <li><b>Harvie Heights</b> sits right at Banff's east gate — closer to Banff townsite than Canmore itself — closing the trip with Ha Ling, Quarry Lake, and an easy Prairie View Lookout stop on the way to the airport.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block soft" id="itinerary">
+  <div class="wrap">
+    <div class="block-head">
+      <p class="eyebrow">Day by day</p>
+      <h2>The itinerary</h2>
+      <p>Tap a day to open it. Every day has a sunrise or sunset built in.</p>
+    </div>
+    <div id="dayList"></div>
+  </div>
+</section>
+
+<section class="block" id="hikes">
+  <div class="wrap">
+    <div class="block-head">
+      <p class="eyebrow">Trail notes</p>
+      <h2>The hiking guide</h2>
+      <p>Every named trail in the itinerary, with the numbers that matter.</p>
+    </div>
+    <div class="hike-grid" id="hikeGrid"></div>
+  </div>
+</section>
+
+<section class="block soft" id="stops">
+  <div class="wrap">
+    <div class="block-head">
+      <p class="eyebrow">No hiking boots required</p>
+      <h2>Scenic stops and viewpoints</h2>
+      <p>Lakes, canyons and pullouts — how long to stay, and when the light is best.</p>
+    </div>
+    <div class="tablewrap"><table id="stopsTable"></table></div>
+  </div>
+</section>
+
+<section class="block" id="food">
+  <div class="wrap">
+    <div class="block-head">
+      <p class="eyebrow">Fuel</p>
+      <h2>Food and coffee, by base</h2>
+      <p>Vegetarian-friendly by default — mountain towns lean that way.</p>
+    </div>
+    <div id="foodBlocks"></div>
+  </div>
+</section>
+
+<section class="block soft" id="photo">
+  <div class="wrap">
+    <div class="block-head">
+      <p class="eyebrow">Golden hour</p>
+      <h2>Photography guide</h2>
+      <p>Every sunrise and sunset worth setting an alarm for — nine days, nine golden hours.</p>
+    </div>
+    <h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--coral);">Sunrise</h4>
+    <div class="tablewrap" style="margin:12px 0 24px;"><table id="sunriseTable"></table></div>
+    <h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--coral);">Sunset</h4>
+    <div class="tablewrap" style="margin-top:12px;"><table id="sunsetTable"></table></div>
+    <p style="margin-top:18px;font-size:13.5px;color:var(--grey);">A circular polarizer earns its weight on Peyto, Moraine and Emerald. Bring a lens cloth for waterfall spray.</p>
+  </div>
+</section>
+
+<section class="block" id="budget">
+  <div class="wrap">
+    <div class="block-head">
+      <p class="eyebrow">For two people, nine days</p>
+      <h2>Trip budget</h2>
+      <p>Excludes accommodation and the rental car — both already booked.</p>
+    </div>
+    <div class="tablewrap"><table id="budgetTable"></table></div>
+  </div>
+</section>
+
+<section class="block soft" id="booking">
+  <div class="wrap">
+    <div class="block-head">
+      <p class="eyebrow">The time-sensitive part</p>
+      <h2>Booking guide</h2>
+      <p>The Moraine Lake shuttle is the one item here that can actually break the trip.</p>
+    </div>
+    <div class="tablewrap"><table id="bookingTable"></table></div>
+  </div>
+</section>
+
+<section class="block" id="packing">
+  <div class="wrap">
+    <div class="block-head">
+      <p class="eyebrow">Before you zip the bag</p>
+      <h2>Packing guide</h2>
+      <p>Tap an item to check it off — just for you, on this screen.</p>
+    </div>
+    <div class="pack-grid" id="packGrid"></div>
+  </div>
+</section>
+
+<section class="block soft" id="safety">
+  <div class="wrap">
+    <div class="block-head">
+      <p class="eyebrow">Read once, remember always</p>
+      <h2>Safety guide</h2>
+    </div>
+    <div class="safety-grid" id="safetyGrid"></div>
+    <div class="logic" style="margin-top:20px;">
+      <h4>Emergency contacts</h4>
+      <div class="contact-row"><span>Emergency (police / fire / ambulance)</span><span>911</span></div>
+      <div class="contact-row"><span>Parks Canada Banff dispatch</span><span>403-762-1470</span></div>
+      <div class="contact-row"><span>Kananaskis emergency services</span><span>403-591-7767</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Built around your fixed flights and stays — sunrise or sunset every day, Banff town moved to arrival day, the Icefields Parkway consolidated into one dedicated day, and both trail closures worked around. Prices, shuttle systems and trail conditions shift year to year, so recheck the Booking Guide a few weeks out.</p>
+  </div>
+</footer>
+
+<script>
+const IMG = {
+  vermilion: "https://commons.wikimedia.org/wiki/Special:FilePath/Vermillion_Lakes,_Banff.jpg?width=1200",
+  johnston: "https://commons.wikimedia.org/wiki/Special:FilePath/JohnstonCanyonUpperFalls.jpg?width=1200",
+  emerald: "https://commons.wikimedia.org/wiki/Special:FilePath/Emerald_Lake-Yoho.jpg?width=1200",
+  moraine: "https://commons.wikimedia.org/wiki/Special:FilePath/Moraine_Lake_17092005.jpg?width=1200",
+  peyto: "https://commons.wikimedia.org/wiki/Special:FilePath/Peyto_Lake-Banff_NP-Canada.jpg?width=1200",
+  paintpots: "https://commons.wikimedia.org/wiki/Special:FilePath/Kootenay_National_Park_-_Paint_Pots_1.jpg?width=1200",
+  radium: "https://commons.wikimedia.org/wiki/Special:FilePath/Hot_springs-pool-Radium.JPG?width=1200",
+  haling: "https://commons.wikimedia.org/wiki/Special:FilePath/Stairs_on_Ha_Ling_Peak.jpg?width=1200",
+  lakelouise: "https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Louise_Canada.JPG?width=1200",
+  banff: "https://commons.wikimedia.org/wiki/Special:FilePath/JohnstonCanyonUpperFalls.jpg?width=1200"
+};
+
+const STAYS = [
+  {label:"Cochrane", dates:"Sept 5–7 · 2 nights", address:"72 Bow Ridge Dr, Cochrane, AB T4C 1V5, Canada", desc:"Gateway to the Banff townsite corridor"},
+  {label:"Golden, BC", dates:"Sept 7–10 · 3 nights", address:"901 7 St N, Golden, BC V0A 1H0, Canada", desc:"Lake Louise, Icefields Parkway, Yoho"},
+  {label:"Radium Hot Springs", dates:"Sept 10–11 · 1 night", address:"4999 BC-93, Radium Hot Springs, BC V0A 1M0, Canada", desc:"The Kootenay Parkway"},
+  {label:"Harvie Heights", dates:"Sept 11–13 · 2 nights", address:"1050 Harvie Heights Rd, Harvie Heights, AB T1W 2W2, Canada", desc:"Right at Banff's east gate — closer to Banff townsite than Canmore itself"}
+];
+
+const DISTANCES = [
+  [1,"Sept 5","Cochrane","~215km (airport → Banff → Cochrane, no backtrack)","~4km around Banff town"],
+  [2,"Sept 6","Cochrane","~235km RT","~6.8km (Johnston Canyon 5.3 + relaxed midday); Ink Pots extension adds ~6.4km"],
+  [3,"Sept 7","Cochrane → Golden","~310km (full Icefields Parkway out-and-back)","~2.5km across 5 stops"],
+  [4,"Sept 8","Golden","~110km RT","10.6km (Lake Agnes/Big Beehive)"],
+  [5,"Sept 9","Golden","~110km RT + shuttle","11.6km (Sentinel Pass)"],
+  [6,"Sept 10","Golden → Radium","~230km","~6km (up to 12.4km with full Stanley Glacier)"],
+  [7,"Sept 11","Radium → Harvie Heights","~185km (via Kootenay Parkway + Two Jack Lake)","~3km"],
+  [8,"Sept 12","Harvie Heights","~40km direct (more if Hwy 742 still closed)","10.6km (Ha Ling 8.6 + Policeman's Creek 2)"],
+  [9,"Sept 13","Harvie Heights → YYC","~145km","~4.5km (Quarry Lake + Prairie View Lookout)"]
+];
+
+const BASES = [
+  {n:"Sept 5–7", name:"Cochrane", desc:"2 nights · gateway to the Banff townsite corridor"},
+  {n:"Sept 7–10", name:"Golden, BC", desc:"3 nights · Lake Louise, Icefields Parkway, Yoho"},
+  {n:"Sept 10–11", name:"Radium Hot Springs", desc:"1 night · the Kootenay Parkway"},
+  {n:"Sept 11–13", name:"Harvie Heights", desc:"2 nights · right at Banff's east gate"}
+];
+
+const DAYS = [
+  {
+    num:1, date:"Sat, Sept 5", title:"Explore Banff town + Vermilion Lakes sunset", img:IMG.vermilion, imgCaption:"Vermilion Lakes — tonight's sunset, real peaks included",
+    theme:"Straight from the airport to Banff — no detour, since Day 2 is headed there anyway. Banff town gets its own unhurried afternoon, and tonight's sunset delivers actual mountains, not a ranch.",
+    stats:[["Wake-up","~3:00am ET"],["Bedtime","~10:15pm"],["Drive today","~215km"],["On foot","~4km"],["Difficulty","None"]],
+    pack:false,
+    carry:["Passport + travel documents","Phone charger","Layers for a cool evening","Reusable water bottles"],
+    reminders:["Grocery stop near the airport before heading out — you won't pass this way again for a few days","Cochrane check-in is 4pm regardless, so there's no reason to detour there before Banff","Double-check the Moraine Lake shuttle reservation for Day 5 is confirmed"],
+    sections:[
+      ["Morning","Land, pick up the car, and handle groceries for the week at a Costco or Walmart near the airport. Then straight to Banff — no detour through Cochrane first, since check-in there is 4pm anyway and you'd just be driving back out."],
+      ["Afternoon — explore Banff town","Banff Avenue at an unhurried pace, the Bow River pathway, Bow Falls, Surprise Corner, the Cascade of Time Garden, coffee at Whitebark Café. No fixed order — just wander."],
+      ["Golden hour · ~7:50pm — Vermilion Lakes","5 minutes from downtown. Mount Rundle reflected in glassy water, real peaks on every side — the mountain sunset Cochrane Ranche never could have been."],
+      ["Evening","Drive to Cochrane (~1h10), check in well past 4pm, light dinner."]
+    ],
+    timeline:[
+      ["3:00am ET","Wake in Toronto"],["6:00am ET","Flight departs Toronto"],["8:30am MT","Land Calgary — clocks go back 2 hours"],
+      ["9:15am","Rental car pickup"],["9:30–10:15am","Grocery stop near the airport"],["10:15–11:40am","Drive to Banff (~1h25)"],
+      ["11:40am–7:10pm","Explore Banff town — Banff Avenue, Bow Falls, Surprise Corner, Cascade of Time Garden, coffee"],
+      ["7:10–7:50pm","Sunset at Vermilion Lakes"],["7:50–9:00pm","Drive to Cochrane"],["9:00pm","Arrive, check in"],
+      ["9:15–10:00pm","Light dinner"],["10:15pm","Bedtime"]
+    ],
+    wake:"~3:00am ET", bed:"~10:15pm",
+    backup:"Nothing today is time-locked. If you land more tired than expected, trim Banff town exploring short and just anchor the day around Vermilion Lakes at sunset."
+  },
+  {
+    num:2, date:"Sun, Sept 6", title:"Johnston Canyon + Gondola sunset", img:IMG.johnston, imgCaption:"Johnston Canyon's catwalk trail, first thing this morning",
+    theme:"Decluttered now that Banff town is already covered — just the canyon in the morning and the Gondola at sunset, with real breathing room between them.",
+    stats:[["Wake-up","6:30am"],["Bedtime","~10:30pm"],["Drive today","~235km RT"],["On foot","~6.8km"],["Difficulty","Easy"]],
+    pack:false,
+    carry:["Bear spray","1.5L water per person","Gondola ticket (booked ~5:30–6:00pm slot, screenshot it)","Layers — cooler on Sulphur Mountain at sunset","Camera"],
+    reminders:["Book the Gondola for a ~5:30–6:00pm slot so you're up top well before the ~7:48pm sunset","Ink Pots extension adds ~6.4km — you have more room for it today since the afternoon is open","Dinner reservation at Sky Bistro (on the mountain) or LUPO (in town) — book ahead for a Sunday"],
+    sections:[
+      ["Morning · arrive by 8am","Johnston Canyon — Lower Falls (1.1km each way) then Upper Falls (2.7km each way), 5.3km total. Before 8am or you're in a conveyor-belt line by 10 on a long weekend. Ink Pots extension adds 6.4km through quieter forest — you have the room for it today if you want a bigger morning."],
+      ["Midday","Genuinely open — lunch, rest, or a slow coffee. Banff town is already covered from yesterday, so there's no pressure to fill this."],
+      ["Evening — the Gondola, timed for sunset","Book around 5:30–6:00pm. Eight minutes up Sulphur Mountain, then time on the boardwalk to Sanson's Peak as the light goes gold."],
+      ["Dinner","Sky Bistro at the summit, or descend and eat in town at LUPO."]
+    ],
+    timeline:[
+      ["6:30am","Wake up"],["7:00–7:15am","Coffee + portable breakfast, depart Cochrane"],["7:15–8:35am","Drive to Johnston Canyon"],
+      ["8:35–10:30am","Johnston Canyon hike (or to 12:30pm with Ink Pots)"],["10:30am–5:00pm","Open — lunch, rest, easy afternoon"],
+      ["5:30–6:00pm","Banff Gondola — ride up"],["6:00–7:48pm","Sulphur Mountain, golden hour into sunset"],
+      ["8:00–9:00pm","Dinner (Sky Bistro or LUPO)"],["9:00–10:15pm","Drive back to Cochrane"],["10:30pm","Bedtime"]
+    ],
+    wake:"6:30am", bed:"~10:30pm",
+    backup:"Johnston Canyon is fine in light rain but the catwalks get slick. If the Gondola is fogged in at sunset, swap for a return trip to Vermilion Lakes instead."
+  },
+  {
+    num:3, date:"Mon, Sept 7 · Labour Day", title:"The Icefields Parkway — transfer to Golden", img:IMG.peyto, imgCaption:"Peyto Lake, the marquee stop on today's drive",
+    theme:"The full Icefields Parkway, consolidated into one dedicated drive. The biggest driving day of the trip — worth every kilometre.",
+    stats:[["Wake-up","6:30am"],["Bedtime","10:00pm"],["Drive today","~310km"],["On foot","~2.5km"],["Difficulty","Easy"]],
+    pack:true,
+    carry:["Everything — full bags, this is a base change","Snacks and a full tank of gas","Layers, it's windier up the Parkway","Camera + polarizer"],
+    reminders:["Pack full bags and check out of Cochrane before you leave this morning","Fill the tank before Lake Louise — no services between there and Golden via this route","Not continuing to Jasper — Peyto/Mistaya is the turnaround point"],
+    sections:[
+      ["Morning","Depart Cochrane, drive west through Banff and up to Lake Louise, then onto the Icefields Parkway (Hwy 93 North)."],
+      ["The stops, in order","Herbert Lake, Crowfoot Glacier viewpoint, Bow Lake, Peyto Lake (the marquee stop), Mistaya Canyon (the turnaround point)."],
+      ["Golden hour · ~7:40pm","Sunset at Peyto Lake or Bow Lake before heading back down to Lake Louise and on to Golden — zero extra driving since you're already up there at the right time."],
+      ["Continue to Golden","Arrive evening, explore downtown Golden briefly, easy dinner."]
+    ],
+    timeline:[
+      ["6:30am","Wake up"],["7:00–7:30am","Breakfast, depart Cochrane"],["7:30–9:15am","Drive to Lake Louise"],
+      ["9:15–9:35am","Herbert Lake"],["9:35–10:15am","Drive to Bow Lake, Crowfoot Glacier viewpoint"],
+      ["10:15–11:00am","Bow Lake"],["11:00am–12:15pm","Peyto Lake"],["12:15–1:15pm","Drive to and explore Mistaya Canyon"],
+      ["1:15–7:00pm","Backtrack toward Peyto/Bow Lake, lunch, unhurried photo time"],
+      ["7:05–7:40pm","Sunset at Peyto Lake or Bow Lake"],["7:40–9:25pm","Drive to Golden"],["9:30–10:00pm","Quick dinner, downtown Golden"],["10:00pm","Bedtime"]
+    ],
+    wake:"6:30am", bed:"10:00pm",
+    backup:"Every stop today is a short roadside walk — light rain doesn't change the plan much. If it's a true washout, trim Mistaya Canyon and head to Golden earlier."
+  },
+  {
+    num:4, date:"Tue, Sept 8", title:"Lake Louise sunrise + Lake Agnes Tea House + Big Beehive", img:IMG.lakelouise, imgCaption:"Lake Louise at first light, before the crowds",
+    theme:"Sunrise at the lakeshore before it's overrun, then one of the best moderate hikes in Banff.",
+    stats:[["Wake-up","5:15am"],["Bedtime","8:45pm — early!"],["Drive today","~110km RT"],["Hike","10.6km"],["Gain","~650m"]],
+    pack:false,
+    carry:["Cash or card for the Lake Agnes Tea House","Bear spray","Poles","2L water per person","Camera + tripod for sunrise"],
+    reminders:["Leave Golden by 5:45am to catch sunrise at the lakeshore before the tour buses arrive","Bring cash for the teahouse just in case","Tonight's bedtime is early — 8:45pm — for tomorrow's 4:15am Sentinel Pass wake-up"],
+    sections:[
+      ["Pre-dawn","Leave Golden early. Sunrise at the Lake Louise lakeshore — Mount Victoria and the glacier lit up, the water still glass-calm, long stretches of shoreline to yourselves."],
+      ["The hike","Past Mirror Lake to Lake Agnes — a hanging alpine lake with a rustic 1901 teahouse. From there, the extra 1.1km to Big Beehive gives a sweeping view straight down onto Lake Louise itself."],
+      ["Afternoon","Return to Golden, rest — tomorrow is the big one."]
+    ],
+    timeline:[
+      ["5:15am","Wake up"],["5:30–5:45am","Coffee, depart Golden"],["5:45–6:45am","Drive to Lake Louise"],
+      ["6:50am","Sunrise at the lakeshore"],["7:15am–12:30pm","Hike: Mirror Lake, Lake Agnes Tea House, Big Beehive"],
+      ["12:30–1:30pm","Lunch near Lake Louise Village"],["1:30–2:30pm","Drive back to Golden"],
+      ["2:30–6:30pm","Rest, recover"],["7:00–8:00pm","Early dinner"],["8:45pm","Bedtime"]
+    ],
+    wake:"5:15am", bed:"8:45pm",
+    backup:"If sunrise is cloudy or rained out, the hike itself holds up fine in light rain — just skip the early departure and go at a normal pace."
+  },
+  {
+    num:5, date:"Wed, Sept 9", title:"Moraine Lake sunrise + Sentinel Pass via Larch Valley", img:IMG.moraine, imgCaption:"Moraine Lake and the Valley of the Ten Peaks — today's big day",
+    theme:"The hike we would not skip. Full-day epic. Nothing else scheduled today.",
+    stats:[["Wake-up","4:15am"],["Bedtime","9:30pm"],["Drive today","~110km RT + shuttle"],["Hike","11.6km"],["Gain","~725m"]],
+    pack:false,
+    carry:["Your Alpine Start shuttle confirmation — screenshot it","Bear spray","Poles","Headlamp","2–2.5L water per person","Trail lunch","Full layers","Camera + tripod"],
+    reminders:["Book the Parks Canada Alpine Start shuttle in advance — private vehicles are still not allowed on Moraine Lake Road","Screenshot your confirmation — no signal at the Park & Ride or Moraine Lake to reload it","If a bear-activity group-of-4 restriction is posted at the trailhead, wait a few minutes and join another group"],
+    sections:[
+      ["Pre-dawn","Alpine Start shuttle to Moraine Lake. Rockpile Trail for sunrise over the Valley of the Ten Peaks."],
+      ["The hike","Larch Valley, past the Minnestimma Lakes, up to Sentinel Pass — 2,611m, the highest maintained trail in Banff National Park."],
+      ["Bear note","Prime grizzly habitat — group hiking restrictions may apply during active bear activity."],
+      ["Photography note","Larches won't be gold yet this early in September — treat this as a big-mountain hike."]
+    ],
+    timeline:[
+      ["4:15am","Wake up"],["4:30–4:45am","Coffee/snack, depart Golden"],["4:45–5:45am","Drive to Lake Louise Park & Ride"],
+      ["5:45–6:15am","Alpine Start shuttle to Moraine Lake"],["6:15–6:50am","Walk to the Rockpile for sunrise"],
+      ["7:00am–1:00pm","Sentinel Pass hike"],["1:00–1:30pm","Return to the Moraine Lake dock"],
+      ["1:30–2:00pm","Shuttle back to Park & Ride"],["2:00–3:00pm","Drive back to Golden"],
+      ["3:00–6:30pm","Shower, rest, recover"],["7:00–8:00pm","Dinner"],["9:30pm","Bedtime"]
+    ],
+    wake:"4:15am", bed:"9:30pm",
+    backup:"Sentinel Pass is unsafe in electrical storms or heavy fog near the exposed switchbacks. If the forecast is bad, swap with Day 4's hike."
+  },
+  {
+    num:6, date:"Thu, Sept 10", title:"Yoho + Kootenay — transfer to Radium", img:IMG.emerald, imgCaption:"Emerald Lake — this morning's kayaking stop",
+    theme:"Emerald Lake, Natural Bridge, and Takakkaw Falls in the morning; Stanley Glacier and a golden-hour soak to close it out. Given yesterday, defaulting to the shorter Stanley Glacier route.",
+    stats:[["Wake-up","6:15am"],["Bedtime","~9:45pm"],["Drive today","~230km"],["On foot","~6km (up to 12.4km on the full Stanley Glacier)"],["Gain","~455m if doing the full route"]],
+    pack:true,
+    carry:["Everything — full bags, this is a base change","Swimsuit + towel packed accessible for tonight's soak","Cash/card for the Emerald Lake boathouse","Sun protection","Bear spray","2L water per person"],
+    reminders:["Pack full bags and check out of Golden before you leave this morning","Fill the gas tank before the Kootenay Parkway — no services between Castle Junction and Radium","Default to the shorter 4.2km Stanley Glacier route — only push for the full 10.6km if genuinely feeling fresh","Keep swimwear near the top of your bag for tonight's sunset soak"],
+    sections:[
+      ["Morning · Emerald Lake","Canoe or kayak rental right on the shore. Then Natural Bridge (5-minute flat walk) and Takakkaw Falls (a detour up Yoho Valley Road; check current Yoho road conditions before you go)."],
+      ["Early afternoon · Stanley Glacier","Into Kootenay National Park. Default is the shorter 4.2km version to the canyon overlook. Full 10.6km route reaches a hanging valley beneath the glacier if you're feeling strong."],
+      ["Golden hour · sunset soak at Radium Hot Springs, ~7:30–7:45pm","Time tonight's soak for golden hour instead of adding a separate stop — zero extra driving since you're already checking in nearby."]
+    ],
+    timeline:[
+      ["6:15am","Wake up"],["6:30–7:00am","Breakfast, depart Golden"],["7:10–7:30am","Emerald Lake — kayak/canoe rental"],
+      ["7:30–9:00am","Paddle + lakeshore time"],["9:00–9:20am","Natural Bridge"],["9:20–10:15am","Takakkaw Falls"],
+      ["10:15–11:15am","Drive to Kootenay Parkway / Stanley Glacier trailhead"],["11:15am–1:30pm","Stanley Glacier (short route)"],
+      ["1:30–3:00pm","Drive to Radium Hot Springs, check in"],["3:00–7:00pm","Rest"],["7:15–7:45pm","Sunset soak, Radium Hot Springs"],["8:15–9:00pm","Dinner"],["9:45pm","Bedtime"]
+    ],
+    wake:"6:15am", bed:"~9:45pm",
+    backup:"Natural Bridge and Takakkaw Falls both hold up fine in light rain. In a genuine downpour, skip Stanley Glacier and go straight to a longer soak instead."
+  },
+  {
+    num:7, date:"Fri, Sept 11", title:"Marble Canyon, Paint Pots + Two Jack Lake sunset", img:IMG.paintpots, imgCaption:"The Paint Pots, Kootenay National Park",
+    theme:"A relaxed transfer day back through Kootenay, ending at your new base right at Banff's east gate.",
+    stats:[["Wake-up","~7:30am"],["Bedtime","9:00pm — early!"],["Drive today","~185km"],["On foot","~3km"],["Difficulty","Easy"]],
+    pack:true,
+    carry:["Everything — full bags, this is a base change","Camera","Layers for the sunset stop"],
+    reminders:["Pack full bags and check out of Radium — this departure is later, no rush","Tonight's bedtime is early again — 9:00pm — for tomorrow's 4:45am Ha Ling wake-up","Check the Highway 742/Goat Creek access status tonight (see Day 8)"],
+    sections:[
+      ["Morning","Sleep in a little, or an optional second soak at Radium before checkout."],
+      ["Midday · Marble Canyon & Paint Pots","Heading north through Kootenay National Park — Marble Canyon (20–30 minute walk over a narrow limestone gorge) and the Paint Pots (a gentle 20-minute walk to ochre-stained mineral springs)."],
+      ["Afternoon","Continue through Castle Junction and Banff townsite to Harvie Heights — your new base sits right at the park's east gate, closer to Banff than Canmore itself. Check in, relax."],
+      ["Golden hour · ~7:20–7:25pm — Two Jack Lake","A short drive from Harvie Heights through Banff townsite — a quieter, less-photographed alternative to Vermilion Lakes (already used Day 1), with the same mountain-reflection payoff and real solitude."]
+    ],
+    timeline:[
+      ["7:30am","Wake up"],["8:00–10:00am","Optional second soak / pack up"],["10:00–10:30am","Depart Radium"],
+      ["10:30–11:30am","Marble Canyon"],["11:30am–12:15pm","Paint Pots"],["12:15–1:30pm","Drive through Castle Junction, Banff townsite"],
+      ["1:30–2:00pm","Arrive Harvie Heights, lunch, settle in"],["2:00–6:35pm","Rest"],
+      ["6:35–7:00pm","Drive to Two Jack Lake"],["7:00–7:25pm","Sunset at Two Jack Lake"],["7:25–7:50pm","Drive back"],
+      ["8:00–8:45pm","Dinner"],["9:00pm","Bedtime — this one matters"]
+    ],
+    wake:"~7:30am", bed:"9:00pm",
+    backup:"Marble Canyon and Paint Pots both hold up well in light rain. If Two Jack Lake is socked in at sunset, Quarry Lake near Canmore is a fine backup, about 10 minutes further."
+  },
+  {
+    num:8, date:"Sat, Sept 12", title:"Ha Ling Peak sunrise + Quarry Lake sunset", img:IMG.haling, imgCaption:"The stairs on Ha Ling Peak's summit approach",
+    theme:"Two golden hours in one day — sunrise on the summit, sunset back at the lake. One of the best summit hikes near Canmore.",
+    alert:"As of writing, a rockslide has closed Hwy 742/Smith-Dorrien Trail on the direct route to the Goat Creek/Ha Ling trailhead, with no confirmed reopening date. The trailhead is still reachable via a Highway 40 South detour through Peter Lougheed Provincial Park, but it takes noticeably longer. Check albertaparks.ca or 511 Alberta the night before — if it's still closed, leave 60–90 minutes earlier than planned.",
+    stats:[["Wake-up","4:45am*"],["Bedtime","9:30pm"],["Drive today","~40km (more if detoured)"],["Hike","8.6km"],["Gain","~730m"]],
+    pack:false,
+    carry:["Poles","Headlamp","Bear spray","2L water per person","Layers","Camera"],
+    reminders:["CHECK Hwy 742/Goat Creek access status the night before","If still closed, leave 60–90 minutes earlier to detour via Highway 40 South","Small trailhead lot regardless — arrive by 5:30am","From Harvie Heights, budget a few extra minutes over a Canmore-based start since you're driving through town first"],
+    sections:[
+      ["Pre-dawn","From the Goat Creek/Ha Ling day-use lot (via Canmore), climb through switchbacks to a scree-and-boulder ridge — a 360° summit view over the Bow Valley, Canmore, and the Three Sisters."],
+      ["Late morning","Descend, breakfast in Canmore."],
+      ["Afternoon","Coffee, downtown Canmore, Policeman's Creek Boardwalk."],
+      ["Golden hour · ~7:10–7:15pm — Quarry Lake","A relaxed, low-effort sunset spot near Canmore — Three Sisters and Ha Ling reflected in calm water."],
+      ["Evening","Celebrate with dinner in Canmore — you've just done both of the trip's epic hikes."]
+    ],
+    timeline:[
+      ["4:45am*","Wake up — earlier if the Hwy 742 detour is still in effect"],["5:00–5:20am","Quick coffee/snack, depart via Canmore"],
+      ["5:20–5:35am*","Arrive Goat Creek / Ha Ling trailhead (longer if detouring)"],["5:35–7:00am","Climb to the summit ridge for sunrise"],
+      ["7:00–9:30am","Descend"],["9:45–11:00am","Breakfast in Canmore"],["11:00am–1:00pm","Shower, rest, lunch"],
+      ["1:00–3:00pm","Coffee + downtown Canmore, Policeman's Creek"],["3:00–6:45pm","Free time"],
+      ["6:45–7:15pm","Drive to and enjoy Quarry Lake for sunset"],["7:30–9:00pm","Celebration dinner in Canmore"],["9:30pm","Bedtime"]
+    ],
+    wake:"4:45am*", bed:"9:30pm",
+    backup:"Ha Ling's summit ridge is exposed scree — unpleasant in rain, unsafe in lightning. If the forecast is bad, swap with Day 9's Prairie View Lookout and do that today instead."
+  },
+  {
+    num:9, date:"Sun, Sept 13", title:"Quarry Lake sunrise + Prairie View Lookout + departure", img:IMG.paintpots, imgCaption:"Barrier Lake from the Prairie View Lookout — a real peak view on the way to the airport",
+    theme:"One last easy golden hour, then an elevated lake-and-mountain viewpoint that's genuinely on the way to Calgary — no detour needed. Plenty of slack today; the flight isn't until 7:40pm.",
+    stats:[["Wake-up","~6:30am"],["Drive today","~145km"],["Hike","~1.1km (short version)"],["Gain","~65m"],["Flight","7:40pm"]],
+    pack:true,
+    carry:["Everything — final full pack","Passport + boarding passes","Rental car documents","Road snacks"],
+    reminders:["Final full pack before you leave Harvie Heights — do a walk-through check of the room","Confirm your rental car return location at Calgary Airport before you drive off","Prairie View Lookout has a longer 13.2km/4hr version too — stick to the short 1.1km viewpoint version given the flight today","Mount Lorette Ponds is a few minutes further down Hwy 40 from Prairie View if you want a second easy stop — genuinely on the way, worth adding if you have the appetite"],
+    sections:[
+      ["Sunrise · ~6:55am — Quarry Lake","A short stop near Canmore to close out the trip with one more quiet golden hour before the day's driving starts."],
+      ["Late morning · Prairie View Lookout (Barrier Lake)","Right at the Highway 1/Highway 40 junction on the way to Calgary — genuinely no detour. The short version of this trail (often called Barrier Lake Lookout) is an easy 1.1km round trip, about 30–60 minutes, climbing just high enough for a real elevated view over Barrier Lake and the surrounding peaks. A proper mountain moment on departure day, not another creek-bed walk."],
+      ["Midday","Continue toward Calgary, lunch en route or near the airport."],
+      ["Afternoon","With this much slack before a 7:40pm flight, there's no need to rush — Prairie View Lookout to the airport is under an hour."]
+    ],
+    timeline:[
+      ["6:30am","Wake up"],["6:40–6:50am","Drive to Quarry Lake"],["6:55–7:15am","Sunrise at Quarry Lake"],
+      ["7:30–9:00am","Breakfast, pack, check out of Harvie Heights"],["9:00–9:50am","Drive toward Calgary via Hwy 1"],
+      ["9:50–10:50am","Prairie View Lookout (Barrier Lake) — short version"],["10:50–11:45am","Continue to Calgary"],
+      ["11:45am–1:00pm","Lunch, relaxed time — big buffer today"],["By 4:00pm","Depart for Calgary Airport if not already there"],
+      ["4:30pm","Arrive Calgary Airport"],["4:30–7:00pm","Rental return, check-in, security, relax at the gate"],["7:40pm","Flight departs Calgary"]
+    ],
+    wake:"~6:30am", bed:"No hotel tonight — sleep on the flight",
+    backup:"Prairie View Lookout's short version holds up fine in light rain. Nothing today is time-locked besides the flight, and there's a wide buffer built in."
+  }
+];
+
+const HIKES = [
+  {name:"Johnston Canyon (+ optional Ink Pots)", img:IMG.johnston, diff:"Easy", rating:"4.5/5", dist:"5.3km RT (11.7km with Ink Pots)", gain:"~120m", dur:"1–2.5hr (4–5hr with Ink Pots)",
+   trailhead:"Johnston Canyon lot, Bow Valley Parkway", parking:"Small paid lot, fills by 8am; overflow 5min walk",
+   viewpoints:"Catwalk beside Lower Falls; platform at Upper Falls; cold mineral springs at Ink Pots", wildlife:"Low risk — high foot traffic",
+   pack:"Light layers, grippy shoes", note:"Go before 8am. Day 2's open midday gives you room for Ink Pots if you want a bigger morning."},
+  {name:"Lake Agnes Tea House + Big Beehive", img:IMG.lakelouise, diff:"Moderate", rating:"4.5/5", dist:"10.6km RT", gain:"~650m", dur:"4–5.5hr",
+   trailhead:"Lake Louise lakeshore, behind the Fairmont", parking:"Paid lot, fills before 8am",
+   viewpoints:"Mirror Lake, Lake Agnes, Big Beehive summit", wildlife:"Moderate bear activity",
+   pack:"Cash/card for the teahouse, layers", note:"Catch sunrise at the lakeshore first, then do the Big Beehive extension."},
+  {name:"Sentinel Pass via Larch Valley", img:IMG.moraine, diff:"Strenuous", rating:"5/5", dist:"11.6km RT", gain:"~725m", dur:"5–7hr",
+   trailhead:"Moraine Lake (Alpine Start shuttle/bike only)", parking:"None for private vehicles — shuttle reservation required",
+   viewpoints:"Rockpile (sunrise), Minnestimma Lakes, the pass itself", wildlife:"Prime grizzly habitat",
+   pack:"Bear spray, poles, layers, full lunch", note:"The hike we would not skip."},
+  {name:"Stanley Glacier", img:IMG.paintpots, diff:"Moderate", rating:"4/5", dist:"4.2km RT (short) or 10.6km RT (full)", gain:"~455m (full)", dur:"2–4.5hr",
+   trailhead:"Highway 93 South (Kootenay Parkway)", parking:"Free lot at trailhead",
+   viewpoints:"Hanging valley beneath the glacier at full-route turnaround", wildlife:"Mountain goats on upper slopes",
+   pack:"Sun protection, bear spray", note:"Default to the short route — it follows the day after Sentinel Pass."},
+  {name:"Ha Ling Peak", img:IMG.haling, diff:"Strenuous", rating:"5/5", dist:"8.6km RT", gain:"~730m", dur:"3–5hr",
+   trailhead:"Goat Creek / Ha Ling lot, via Canmore — currently only reachable via a Hwy 40 South detour if the direct road is still closed", parking:"Small free lot, fills very early on weekends",
+   viewpoints:"Summit ridge — 360° over Canmore and the Three Sisters", wildlife:"Black bear activity on lower sections",
+   pack:"Poles, headlamp", note:"One of the best summit hikes near Canmore. Check road access first."},
+  {name:"Prairie View Lookout (Barrier Lake)", img:IMG.paintpots, diff:"Easy (short version)", rating:"4/5", dist:"~1.1km RT (short) or 13.2km RT (full to the fire lookout)", gain:"~65m (short) or ~420m (full)", dur:"30–60min (short) or 3–4hr (full)",
+   trailhead:"Barrier Dam day-use area, off Highway 40 at the Hwy 1 junction", parking:"Free lot, popular on weekends — Kananaskis Conservation Pass required",
+   viewpoints:"Elevated view over Barrier Lake and the surrounding peaks", wildlife:"Low-moderate, standard precautions",
+   pack:"Light layers, good shoes", note:"Stick to the short version on departure day — it's right on the route to Calgary, genuinely no detour. Mount Lorette Ponds is a few minutes further down Hwy 40 if you want a second easy stop."}
+];
+
+const STOPS = [
+  ["Vermilion Lakes","30–45min","Sunset","Minimal","Low–Mod","5/5"],
+  ["Two Jack Lake","20–30min","Sunset","Minimal","Low","4.5/5"],
+  ["Bow Lake","15–20min","Golden hour","Minimal","Moderate","4/5"],
+  ["Crowfoot Glacier","5–10min","Any","None (roadside)","Low","3.5/5"],
+  ["Herbert Lake","10–15min","Morning","Minimal","Low","4/5"],
+  ["Peyto Lake","30–45min","Midday for colour, sunset for light","Easy paved path","High","5/5"],
+  ["Mistaya Canyon","20–30min","Any","Easy loop","Low–Mod","3.5/5"],
+  ["Lake Louise lakeshore","30–60min","Sunrise — essential","Minimal","Very high","5/5"],
+  ["Mirror Lake","10min","Morning","Moderate (en route)","Low","3.5/5"],
+  ["Moraine Lake / Rockpile","45–60min","Sunrise — essential","Short, steep scramble","Very high","5/5"],
+  ["Emerald Lake","1.5–2hr","Midday for colour","Easy, flat loop optional","Moderate","5/5"],
+  ["Natural Bridge","10–15min","Any","Minimal","Low","4/5"],
+  ["Takakkaw Falls","20–30min","Midday","Minimal","Moderate","4.5/5"],
+  ["Marble Canyon","20–30min","Any","Easy, bridges","Low–Mod","4/5"],
+  ["Paint Pots","30–45min","Midday","Easy, flat","Low","4/5"],
+  ["Radium Hot Springs (pools)","1–1.5hr","Golden hour / sunset","Minimal","Moderate","4.5/5"],
+  ["Quarry Lake","30–45min","Sunrise or sunset","Minimal","Low","4/5"],
+  ["Policeman's Creek","20–30min","Any","Flat boardwalk","Low","3.5/5"],
+  ["Prairie View / Barrier Lake Lookout","30–60min","Morning","Short climb","Low–Mod","4/5"],
+  ["Mount Lorette Ponds","20–30min","Any","Minimal, flat","Moderate","4/5 (optional add-on)"]
+];
+
+const FOOD = [
+  {base:"Cochrane", items:[
+    ["Breakfast / coffee","A local café in town.","$"],
+    ["Treat","MacKay's Ice Cream — a Cochrane institution, worth a stop if timing allows.","$"],
+    ["Dinner","Casual Bow Valley pub fare along the main street.","$–$$"]
+  ]},
+  {base:"Banff townsite", items:[
+    ["Coffee","Whitebark Café — good espresso on Banff Avenue.","$"],
+    ["Dinner (on the mountain)","Sky Bistro, at the Gondola summit — book ahead, especially for a sunset slot.","$$$"],
+    ["Dinner (in town)","LUPO — reliable Italian, a good alternative.","$$–$$$"]
+  ]},
+  {base:"Lake Louise area", items:[
+    ["Trail lunch","Lake Agnes Tea House — tea, soup, baked goods, cash/card.","$"],
+    ["Coffee","Laggan's Mountain Bakery, Lake Louise Village.","$"]
+  ]},
+  {base:"Golden, BC", items:[
+    ["Breakfast","Bacchus Books & Café.","$$"],
+    ["Dinner","Eleven22 Restaurant — vegetarian mains, reservations recommended weekends.","$$–$$$"]
+  ]},
+  {base:"Radium Hot Springs", items:[
+    ["Dinner","Limited but functional — a couple of casual family restaurants on Hwy 93.","$–$$"]
+  ]},
+  {base:"Canmore / Harvie Heights", items:[
+    ["Breakfast","Communitea Café — strong vegetarian/vegan grain bowls.","$$"],
+    ["Coffee","Rocky Mountain Bagel Co. — opens early, good pre-Ha Ling fuel.","$"],
+    ["Celebration dinner (Day 8)","The Sherwood House or Communitea — reservations recommended for a Saturday.","$$–$$$"]
+  ]}
+];
+
+const SUNRISE = [
+  ["Day 4","Lake Louise lakeshore","~6:20am (before ~6:50 sunrise)","Lakeshore, in front of the Fairmont","16–35mm wide","Yes"],
+  ["Day 5","Moraine Lake","~6:30am (before ~6:50 sunrise)","Rockpile Trail","16–35mm wide","Yes"],
+  ["Day 8","Ha Ling Peak summit","~6:40am (before ~7:00 sunrise)*","Summit ridge","24–70mm","Optional"],
+  ["Day 9","Quarry Lake","~6:55am (before ~7:00 sunrise)","East shore path","16–35mm wide","Optional, no rush"]
+];
+const SUNSET = [
+  ["Day 1","Vermilion Lakes","~7:45–7:50pm","Mount Rundle reflection, real peaks on every side"],
+  ["Day 2","Banff Gondola / Sulphur Mountain","~7:48pm","360° panorama, thin crowds up top at this hour"],
+  ["Day 3","Peyto Lake / Bow Lake","~7:35–7:40pm","Peyto's platform for the classic shape; Bow Lake for a lower foreground"],
+  ["Day 6","Radium Hot Springs (soak)","~7:30–7:45pm","No camera needed — just timing the soak for golden hour"],
+  ["Day 7","Two Jack Lake","~7:20–7:25pm","Quieter alternative to Vermilion, same reflection payoff"],
+  ["Day 8","Quarry Lake","~7:10–7:15pm","Three Sisters reflected, quiet water"]
+];
+
+const BUDGET = [
+  ["Fuel","$305–390","~1,470km total; Rockies prices run higher than city averages"],
+  ["Park entry passes","$85–95","Free Jun 19–Sept 7 (Days 1–3); Discovery Pass or dailies cover Days 4–9"],
+  ["Kananaskis Conservation Pass","$20–35","Required for Prairie View Lookout / Barrier Lake, Day 9 — separate from the National Parks pass"],
+  ["Food (all meals + coffee)","$620–800","~$70–95/day for two, plus two sit-down dinners"],
+  ["Kayaking at Emerald Lake","$90–120","~1 hour rental, two people"],
+  ["Hot springs (Radium)","$50–70","Day pass, 2 people; second soak adds $25–35"],
+  ["Banff Gondola","$130–180","2 adults RT, sunset slots — book early"],
+  ["Alpine Start shuttle","$50–70","2 adults RT + reservation fee"],
+  ["Roam Transit backup","$60","Only if needed"],
+  ["Parking fees (misc.)","$40–60",""],
+  ["Emergency/contingency","$200",""],
+  ["Estimated total (excl. accommodation & car)","≈ $1,610–2,030 CAD","For 2 people, 9 days"]
+];
+
+const BOOKING = [
+  ["Moraine Lake / Lake Louise Alpine Start shuttle","reservation.pc.gc.ca or 1-877-737-3783","Watch the rolling 60% release, 8am MT two days before each date","Non-refundable reservation fee"],
+  ["Banff Gondola (sunset slot)","Official Pursuit/Banff Gondola site","As early as possible","Sunset slots can sell out"],
+  ["Sky Bistro dinner","Via the Gondola site","A few days ahead for a Sunday","Alternative: LUPO in town"],
+  ["Radium Hot Springs","parks.canada.ca or pay at the door","Not required in advance","Excluded from the free Canada Strong Pass"],
+  ["Emerald Lake kayak/canoe","At the boathouse, or online","Ahead of time on weekends","First-come-first-served can mean a wait"],
+  ["Park entry pass","parks.canada.ca","Online before departure, or at any gate","Free through Sept 7, 2026"],
+  ["Kananaskis Conservation Pass (for Day 9)","kananaskis.ca","Online before you go","Separate pass from the National Parks system, required for Barrier Lake/Prairie View"],
+  ["Roam Transit Super Pass (backup)","roamtransit.com","Anytime","Backup only"],
+  ["Hwy 742/Goat Creek closure status","albertaparks.ca or dial 511","Check the night before Day 8","No confirmed reopening date as of writing"]
+];
+
+const PACKING = [
+  {title:"Master list", items:["Layered clothing: base, insulating mid-layer, waterproof shell","Broken-in hiking boots + lighter shoes for evenings","Hiking poles","Bear spray — one per person, kept accessible","2–3L hydration capacity per person for hike days","Headlamp for the sunrise hikes","Sun protection: hat, sunglasses, SPF","Swimwear + quick-dry towel","20–30L daypack","Offline maps downloaded before you lose signal"]},
+  {title:"Sunrise days (4, 5 & 8)", items:["Headlamp","Extra layer for pre-dawn cold","Thermos of coffee or tea"]},
+  {title:"Kayaking day (6)", items:["Quick-dry clothes","Dry bag for phone or camera"]},
+  {title:"Hot springs days (6 & 7)", items:["Swimwear","Towel","Flip-flops"]},
+  {title:"Photography gear", items:["Wide-angle lens (16–35mm equiv.)","Mid-range zoom (24–70mm)","Circular polarizer","Extra batteries + memory cards","Compact tripod","Lens cloth"]},
+  {title:"Emergency kit", items:["Small first-aid kit","Whistle","Emergency blanket","Personal medications","Paper map backup"]}
+];
+
+const SAFETY = [
+  {title:"Bear safety", body:"Prime grizzly and black bear habitat, especially Larch Valley/Sentinel Pass, Lake Agnes, and Stanley Glacier. Carry bear spray on your hip. Make noise near dense brush or berry patches. Respect any posted minimum-group-size restrictions."},
+  {title:"Mountain weather", body:"Weather shifts fast at elevation — carry a shell even on hikes that look easy from the parking lot. Afternoon storms grow more common as September progresses."},
+  {title:"Wildlife beyond bears", body:"Elk rut begins in September — bulls can be unpredictable near Banff townsite; stay 100m+ back. Bighorn sheep and mountain goats are common on the Icefields Parkway."},
+  {title:"Current closure: Hwy 742 / Goat Creek", body:"A June 2026 rockslide closed Spray Lakes Road/Highway 742/Smith-Dorrien Trail, with no confirmed reopening date. Affects the direct route to Ha Ling Peak (Day 8). Check albertaparks.ca or call 511 before Day 8."},
+  {title:"Road conditions", body:"The Icefields and Kootenay Parkways have long stretches with no fuel or signal — fill up before you go. Watch for wildlife on the road at dawn and dusk."},
+  {title:"Cell coverage", body:"Good in Cochrane, Banff townsite, Golden, Canmore, Harvie Heights and Radium village. Patchy on the Bow Valley Parkway and in Lake Louise Village. None to very limited on the Icefields Parkway, Yoho Valley Road, the Kootenay Parkway, at Moraine Lake, and on alpine trails past their trailheads."},
+  {title:"Offline maps", body:"Download offline map areas for the whole route before leaving Cochrane's reliable signal on Day 3. Screenshot shuttle and Gondola confirmations locally."}
+];
+
+</script>
+<script>
+function el(tag, cls, html){
+  const e = document.createElement(tag);
+  if(cls) e.className = cls;
+  if(html !== undefined) e.innerHTML = html;
+  return e;
+}
+const pin = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>`;
+
+/* ---- Stays ---- */
+const stayGrid = document.getElementById('stayGrid');
+const STAY_IMGS = [IMG.vermilion, IMG.emerald, IMG.radium, IMG.haling];
+STAYS.forEach((s,i)=>{
+  const c = el('div','stay-card');
+  const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(s.address);
+  c.innerHTML = `
+    <div class="stay-photo"><img src="${STAY_IMGS[i]}" alt="${s.label}" loading="lazy"></div>
+    <div class="stay-body">
+      <div class="dates">${s.dates}</div>
+      <h4>${s.label}</h4>
+      <div class="addr">${pin}<span>${s.address}</span></div>
+      <p class="desc">${s.desc}</p>
+      <a class="maplink" href="${mapUrl}" target="_blank" rel="noopener">Open in Maps &rarr;</a>
+    </div>`;
+  stayGrid.appendChild(c);
+});
+
+/* ---- Day accordion ---- */
+const dayList = document.getElementById('dayList');
+DAYS.forEach((d,i)=>{
+  const card = el('div','day'+(i===0?' open':''));
+  card.id = 'day'+d.num;
+  const statsHTML = d.stats.map(s=>`<span class="stat"><b>${s[1]}</b> ${s[0]}</span>`).join('');
+  const secHTML = d.sections.map(s=>`<div class="day-sec"><h5>${s[0]}</h5><p>${s[1]}</p></div>`).join('');
+  const timelineHTML = d.timeline ? `<div class="day-sec"><h5>Full timeline</h5><div class="tablewrap timeline-table"><table>
+    <thead><tr><th>Time</th><th>What</th></tr></thead>
+    <tbody>${d.timeline.map(t=>`<tr><td class="strong">${t[0]}</td><td>${t[1]}</td></tr>`).join('')}</tbody>
+  </table></div></div>` : '';
+  const alertHTML = d.alert ? `<div class="day-alert"><b>Heads up.</b> ${d.alert}</div>` : '';
+  const packBadge = d.pack ? `<span class="pack-badge">Pack full bags today — checkout day</span>` : '';
+  const carryHTML = d.carry ? `<div class="day-sec"><h5>Take with you today</h5><ul class="carry-list">${d.carry.map(c=>`<li>${c}</li>`).join('')}</ul></div>` : '';
+  const remindersHTML = d.reminders ? `<div class="day-sec"><h5>Don't forget</h5><ul class="reminder-list">${d.reminders.map(r=>`<li>${r}</li>`).join('')}</ul></div>` : '';
+  const imgHTML = d.img ? `<div class="day-photo"><img src="${d.img}" alt="${d.imgCaption||d.title}" loading="lazy"><span class="day-photo-cap">${d.imgCaption||''}</span></div>` : '';
+  card.innerHTML = `
+    <div class="day-head">
+      <div class="daynum">DAY<b>${d.num}</b>${d.date}</div>
+      <div class="title"><h3>${d.title}</h3><div class="theme">${d.theme}</div>${packBadge}</div>
+      <div class="chev">&#9662;</div>
+    </div>
+    <div class="day-body"><div class="day-body-inner">
+      ${imgHTML}
+      ${alertHTML}
+      <div class="stat-row">${statsHTML}</div>
+      ${carryHTML}
+      ${remindersHTML}
+      ${secHTML}
+      ${timelineHTML}
+      <div class="backup"><b>Backup plan.</b> ${d.backup}</div>
+    </div></div>`;
+  card.querySelector('.day-head').addEventListener('click', ()=> card.classList.toggle('open'));
+  dayList.appendChild(card);
+});
+
+/* ---- Hike cards ---- */
+const hikeGrid = document.getElementById('hikeGrid');
+const diffClass = d => d.toLowerCase().includes('easy') ? 'diff-easy' : d.toLowerCase().includes('mod') ? 'diff-moderate' : 'diff-strenuous';
+HIKES.forEach(h=>{
+  const c = el('div','hike-card');
+  c.innerHTML = `
+    ${h.img?`<div class="hike-photo"><img src="${h.img}" alt="${h.name}" loading="lazy"></div>`:''}
+    <h4>${h.name}<span class="rating">${h.rating}</span></h4>
+    <span class="diff-tag ${diffClass(h.diff)}">${h.diff}</span>
+    <div class="hike-stats">
+      <div><span class="v">${h.dist}</span><span class="l">Distance</span></div>
+      <div><span class="v">${h.gain}</span><span class="l">Gain</span></div>
+      <div><span class="v">${h.dur}</span><span class="l">Duration</span></div>
+      <div><span class="v">${h.diff}</span><span class="l">Difficulty</span></div>
+    </div>
+    <dl>
+      <dt>Trailhead / parking</dt><dd>${h.trailhead} — ${h.parking}</dd>
+      <dt>Best viewpoints</dt><dd>${h.viewpoints}</dd>
+      <dt>Wildlife</dt><dd>${h.wildlife}</dd>
+      <dt>Pack</dt><dd>${h.pack}</dd>
+      <dt>Note</dt><dd>${h.note}</dd>
+    </dl>`;
+  hikeGrid.appendChild(c);
+});
+
+/* ---- Stops table ---- */
+document.getElementById('stopsTable').innerHTML = `<thead><tr><th>Stop</th><th>Time to stay</th><th>Best time of day</th><th>Walking</th><th>Crowds</th><th>Worth it</th></tr></thead>
+<tbody>${STOPS.map(s=>`<tr><td class="strong">${s[0]}</td><td>${s[1]}</td><td>${s[2]}</td><td>${s[3]}</td><td>${s[4]}</td><td>${s[5]}</td></tr>`).join('')}</tbody>`;
+
+/* ---- Food ---- */
+const foodBlocks = document.getElementById('foodBlocks');
+FOOD.forEach(f=>{
+  const wrap = el('div');
+  wrap.style.marginBottom = '30px';
+  const heading = el('h4', null, f.base);
+  heading.style.fontSize = '13.5px';
+  heading.style.fontWeight = '700';
+  heading.style.textTransform = 'uppercase';
+  heading.style.letterSpacing = '.03em';
+  heading.style.color = 'var(--coral)';
+  heading.style.marginBottom = '12px';
+  wrap.appendChild(heading);
+  const grid = el('div','food-grid');
+  f.items.forEach(it=>{
+    const c = el('div','food-card');
+    c.innerHTML = `<h4>${it[0]}</h4><div class="row">${it[1]}</div><div class="price">${it[2]}</div>`;
+    grid.appendChild(c);
+  });
+  wrap.appendChild(grid);
+  foodBlocks.appendChild(wrap);
+});
+
+/* ---- Photography tables ---- */
+document.getElementById('sunriseTable').innerHTML = `<thead><tr><th>Day</th><th>Location</th><th>Arrival</th><th>Viewpoint</th><th>Lens</th><th>Tripod</th></tr></thead>
+<tbody>${SUNRISE.map(s=>`<tr><td class="strong">${s[0]}</td><td>${s[1]}</td><td>${s[2]}</td><td>${s[3]}</td><td>${s[4]}</td><td>${s[5]}</td></tr>`).join('')}</tbody>`;
+document.getElementById('sunsetTable').innerHTML = `<thead><tr><th>Day</th><th>Location</th><th>Timing</th><th>Composition</th></tr></thead>
+<tbody>${SUNSET.map(s=>`<tr><td class="strong">${s[0]}</td><td>${s[1]}</td><td>${s[2]}</td><td>${s[3]}</td></tr>`).join('')}</tbody>`;
+
+/* ---- Budget table ---- */
+document.getElementById('budgetTable').innerHTML = `<thead><tr><th>Category</th><th>Estimate</th><th>Notes</th></tr></thead>
+<tbody>${BUDGET.map(b=>`<tr><td class="strong">${b[0]}</td><td>${b[1]}</td><td>${b[2]}</td></tr>`).join('')}</tbody>`;
+
+/* ---- Booking table ---- */
+document.getElementById('bookingTable').innerHTML = `<thead><tr><th>What</th><th>Where</th><th>When to book</th><th>Notes</th></tr></thead>
+<tbody>${BOOKING.map(b=>`<tr><td class="strong">${b[0]}</td><td>${b[1]}</td><td>${b[2]}</td><td>${b[3]}</td></tr>`).join('')}</tbody>`;
+
+/* ---- Packing checklist ---- */
+const packGrid = document.getElementById('packGrid');
+PACKING.forEach(section=>{
+  const col = el('div','pack-col');
+  const h = el('h4', null, section.title);
+  col.appendChild(h);
+  const ul = el('ul');
+  section.items.forEach(item=>{
+    const li = el('li', null, `<span class="box"></span><span>${item}</span>`);
+    li.addEventListener('click', ()=> li.classList.toggle('checked'));
+    ul.appendChild(li);
+  });
+  col.appendChild(ul);
+  packGrid.appendChild(col);
+});
+
+/* ---- Safety cards ---- */
+const safetyGrid = document.getElementById('safetyGrid');
+SAFETY.forEach(s=>{
+  const c = el('div','safety-card');
+  c.innerHTML = `<h4>${s.title}</h4><p>${s.body}</p>`;
+  safetyGrid.appendChild(c);
+});
+
+/* ---- Nav active state on scroll ---- */
+const navLinks = Array.from(document.querySelectorAll('#navlinks a'));
+const navSections = navLinks.map(a=> document.querySelector(a.getAttribute('href'))).filter(Boolean);
+function onScroll(){
+  let idx = 0;
+  const y = window.scrollY + 120;
+  navSections.forEach((s,i)=>{ if(s && s.offsetTop <= y) idx = i; });
+  navLinks.forEach(a=>a.classList.remove('active'));
+  if(navLinks[idx]) navLinks[idx].classList.add('active');
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+</script>
+</body>
+</html>
